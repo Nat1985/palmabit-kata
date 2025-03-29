@@ -1,11 +1,5 @@
 import { useEffect, useState } from "react";
 
-interface Appointments {
-    id: string;
-    servicesName: string;
-    apptStartTime: string;
-}
-
 interface ApptBooked {
     id: string;
     serviceName: string;
@@ -28,9 +22,12 @@ export function useServices<T>(url: string) {
 
     // Funzione per eseguire la chiamate
     const fetchData = async (url: string) => {
+        console.log(url)
         setIsLoading(true);
         try {
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            console.log(0)
+            // Simulo un po' di ritardo
+            await new Promise(resolve => setTimeout(resolve, 1000));
             const response = await fetch(`http://localhost:2000${url}`);
             if (!response.ok) {
                 const errorMessage = await response.text();

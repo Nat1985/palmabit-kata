@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import logo from '../assets/images/logo.png'
 import { PrimaryButton } from '../components/buttons'
 
@@ -13,9 +14,7 @@ function LandingPage() {
             <div className="max-w-[440px] text-center">
                 <p>Lithia Motors wants to put in full control of your car-owning experience by providing easy to book service appointments from the comfort of your own home!</p>
             </div>
-            <PrimaryButton link="/services">
-                Get Started
-            </PrimaryButton>
+            <Link to="/services"><button className="primary">Get Started</button></Link>
         </main>
     )
 }
