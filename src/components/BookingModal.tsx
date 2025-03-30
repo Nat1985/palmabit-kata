@@ -137,7 +137,7 @@ function BookingModal({ id, closeModal }: Modal) {
                         }
                         {
                             fetchStatus === 'i' && !isAllField &&
-                            <button className='disabled mt-8' type='submit'>Book</button>
+                            <button className='disabled mt-8' disabled>Book</button>
                         }
                         {
                             fetchStatus === 'l' &&
@@ -157,8 +157,8 @@ function BookingModal({ id, closeModal }: Modal) {
             {
                 fetchStatus === 's' && appBooked &&
                 <div className="bg-white p-8 rounded-xl w-full md:w-fit">
-                    <h3 className='text-center'>Service Booked</h3>
-                    <p className='text-center text-green-600'>Appointment successfully booked. Here are the details of your reservation</p>
+                    <h3 className='text-center'>Service Booked!</h3>
+                    <p className='text-center text-green-600 mt-4'>Appointment successfully booked. Here are the details of your reservation</p>
                     <ul className='list-disc mt-4 p-2 border-t border-neutral-300'>
                         <li className='ml-8'><span className='text-[#CF675F]'>Service:</span> {appBooked.serviceName}</li>
                         <li className='ml-8'><span className='text-[#CF675F]'>Email:</span> {appBooked.email}</li>

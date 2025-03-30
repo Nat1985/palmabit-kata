@@ -45,7 +45,7 @@ function AppointmentList({ id, serviceDuration }: AppointmentList) {
                             return <li key={index} className='mt-2 flex gap-1'>
                                 <input
                                     type="radio"
-                                    name="appointments"
+                                    name={`${id}-appointments`}
                                     id={element.id}
                                     data-servicename={element.servicesName}
                                     onChange={handleSelection}
