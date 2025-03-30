@@ -4,9 +4,8 @@ import discBrakeIcon from '../assets/images/disc-brake.png'
 import oilIcon from '../assets/images/oil.png'
 import tireIcon from '../assets/images/tire.png'
 import arrowDown from '../assets/images/arrow-down.png'
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import AppointmentList from "./AppointmentList"
-import { useServices } from "../hooks/useServices"
 
 const iconArray = [
   carDetailingIcon,

@@ -1,18 +1,6 @@
 import { useEffect, useState } from "react";
 
-interface ApptBooked {
-    id: string;
-    serviceName: string;
-    serviceId: number;
-    apptStartTime: string;
-    email: string;
-    name: string;
-    make: string;
-    model: string;
-    modelYear: string;
-}
-
-// Questo hook è generico quindi gestisce tutte e tre le chiamate
+// Hook per le chiamate get al montaggio dei componenti
 export function useServices<T>(url: string) {
 
     // Stati del componente che gestiscono i dati della chiamata
@@ -22,13 +10,14 @@ export function useServices<T>(url: string) {
 
     // Funzione per eseguire la chiamate
     const fetchData = async (url: string) => {
-        console.log(url)
         setIsLoading(true);
         try {
-            console.log(0)
             // Simulo un po' di ritardo
             await new Promise(resolve => setTimeout(resolve, 1000));
-            const response = await fetch(`http://localhost:2000${url}`);
+            const fetchUrl = `http://localhost:2000${url}`;
+            const headers = { 'Content-Type': 'application/json' };
+            const options: RequestInit = { method: 'GET', headers };
+            const response = await fetch(fetchUrl, options);
             if (!response.ok) {
                 const errorMessage = await response.text();
                 throw errorMessage;

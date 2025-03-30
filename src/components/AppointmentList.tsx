@@ -1,8 +1,9 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { useServices } from '../hooks/useServices'
 import Loader from './Loader';
 import { getDate } from '../utils/getDate';
 import BookingModal from './BookingModal';
+import ErrorLabel from './ErrorLabel';
 
 interface AppointmentList {
     id: number,
@@ -20,7 +21,7 @@ function AppointmentList({ id, serviceDuration }: AppointmentList) {
     const { data, error, isLoading } = useServices<Appointments[]>(`/appointments/${id}`);
     const [selection, setSelection] = useState<string | null>(null);
     const handleSelection = (event: ChangeEvent<HTMLInputElement>) => {
-        const {id} = event.target;
+        const { id } = event.target;
         setSelection(id);
     }
     // Gestisco la modale di prenotazione
@@ -36,24 +37,31 @@ function AppointmentList({ id, serviceDuration }: AppointmentList) {
             {
                 isLoading && <Loader />
             }
-            <ul>
-                {
-                    data?.map((element, index) => {
-                        return <li key={index} className='mt-2 flex gap-1'>
-                            <input
-                                type="radio"
-                                name="appointments"
-                                id={element.id}
-                                value={element.servicesName}
-                                onChange={handleSelection}
-                                checked={element.id === selection}
-                                className='cursor-pointer'
-                            />
-                            <label htmlFor={element.id} className='cursor-pointer'>{getDate(element.apptStartTime)}</label>
-                        </li>
-                    })
-                }
-            </ul>
+            {
+                !isLoading && data &&
+                <ul>
+                    {
+                        data.map((element, index) => {
+                            return <li key={index} className='mt-2 flex gap-1'>
+                                <input
+                                    type="radio"
+                                    name="appointments"
+                                    id={element.id}
+                                    data-servicename={element.servicesName}
+                                    onChange={handleSelection}
+                                    checked={element.id === selection}
+                                    className='cursor-pointer'
+                                />
+                                <label htmlFor={element.id} className='cursor-pointer'>{getDate(element.apptStartTime)}</label>
+                            </li>
+                        })
+                    }
+                </ul>
+            }
+            {
+                !isLoading && error &&
+                <ErrorLabel message={error} />
+            }
             {selection && <button className='primary' onClick={() => setBooking(selection)}>Book Now</button>}
             {!selection && <button className='disabled'>Book Now</button>}
             {/* Overlay con modale di prenotazione */}

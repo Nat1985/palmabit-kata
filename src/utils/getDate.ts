@@ -1,7 +1,7 @@
 import { format, parseISO } from 'date-fns';
-import { it, enUS } from 'date-fns/locale';
+import { enUS } from 'date-fns/locale';
 
 export function getDate(isoDateString: string) {
     const date = parseISO(isoDateString);
-    return format(date, 'dd MMMM yyyy', { locale: enUS });
+    return format(date, 'dd MMMM yyyy, HH:mm', { locale: enUS });
 }

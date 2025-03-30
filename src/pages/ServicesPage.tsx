@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { SecondaryButton } from "../components/buttons"
 import Loader from "../components/Loader";
 import ServiceCard from "../components/ServiceCard";
 import { useServices } from "../hooks/useServices";
+import ErrorLabel from "../components/ErrorLabel";
 
 export interface Services {
   id: number;
@@ -20,6 +20,7 @@ function ServicesPage() {
         {
           data?.map((service, index) => {
             return <ServiceCard
+              key={index}
               id={service.id}
               serviceName={service.serviceName}
               serviceDuration={service.serviceDuration}
@@ -29,6 +30,10 @@ function ServicesPage() {
         {
           isLoading &&
           <Loader />
+        }
+        {
+          error &&
+          <ErrorLabel message={error} />
         }
       </div>
     </main>
