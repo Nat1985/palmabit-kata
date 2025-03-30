@@ -14,6 +14,7 @@ function LandingPage() {
                 <p>Lithia Motors wants to put in full control of your car-owning experience by providing easy to book service appointments from the comfort of your own home!</p>
             </div>
             <Link to="/services"><button className="primary">Get Started</button></Link>
+            <div className='text-neutral-400 mt-8'>supportbutton@lithia.com | 555-872-3289</div>
         </main>
     )
 }
