@@ -16,7 +16,6 @@ const iconArray = [
 
 function ServiceCard({ id, serviceName, serviceDuration }: Services) {
   const [isSelected, setIsSelected] = useState<boolean>(false);
-  console.log(iconArray)
   return (
     <div className="w-full md:w-[600px] border rounded-lg p-4 border-[#5F7FCF]"
       onClick={() => setIsSelected(prev => !prev)}
