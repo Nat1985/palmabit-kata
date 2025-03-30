@@ -167,7 +167,9 @@ function BookingModal({ id, closeModal }: Modal) {
                         <li className='ml-8'><span className='text-[#CF675F]'>modelYear:</span> {appBooked.modelYear}</li>
                         <li className='ml-8 font-bold underline'><span className='text-[#CF675F]'>Date:</span> {getDate(appBooked.apptStartTime as string)}</li>
                     </ul>
-                    <Link to="/"><button className="primary mt-8">Back to Homepage</button></Link>
+                    <div className="flex justify-center">
+                        <Link to="/"><button className="primary mt-8">Back to Homepage</button></Link>
+                    </div>
                 </div>
             }
         </div>
